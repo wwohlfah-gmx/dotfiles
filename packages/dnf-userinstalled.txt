@@ -306,6 +306,7 @@ qt6-qtwayland-adwaita-decoration-0:6.11.1-1.fc44.x86_64
 quota-1:4.11-2.fc44.x86_64
 realmd-0:0.17.1-19.fc44.x86_64
 realtek-firmware-0:20260810-1.fc44.noarch
+ripgrep-0:15.2.0-1.fc44.x86_64
 rootfiles-0:9.0-6.fc44.noarch
 rpm-0:6.0.2-1.fc44.x86_64
 rsync-0:3.5.0-1.fc44.x86_64

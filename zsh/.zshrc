@@ -76,11 +76,17 @@ plugins=(git argocd chucknorris eza fzf helm history k9s kind kubectl podman sig
 
 source $ZSH/oh-my-zsh.sh
 
-# FZF
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+# FZF key bindings, fuzzy completion, and FZF_DEFAULT_COMMAND are already
+# set up by the `fzf` oh-my-zsh plugin above -- no need to `source <(fzf
+# --zsh)` again here.
 
-
+# Catppuccin Macchiato colors for fzf's popup UI.
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363A4F,bg:#24273A,spinner:#F4DBD6,hl:#ED8796 \
+--color=fg:#CAD3F5,header:#ED8796,info:#C6A0F6,pointer:#F4DBD6 \
+--color=marker:#B7BDF8,fg+:#CAD3F5,prompt:#C6A0F6,hl+:#ED8796 \
+--color=selected-bg:#494D64 \
+--color=border:#6E738D,label:#CAD3F5"
 
 # User configuration
 
