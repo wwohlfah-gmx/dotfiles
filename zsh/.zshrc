@@ -8,7 +8,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+# Prompt is Starship (Catppuccin preset), set at the end of this file --
+# leave empty so oh-my-zsh doesn't render its own prompt too.
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,13 +107,6 @@ source <(fzf --zsh)
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 
-if [ -f `which powerline-daemon` ]; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  . /usr/share/powerline/bash/powerline.sh
-fi
-
 # Example aliases
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -122,6 +117,8 @@ alias ll="ls -al"
 
 
 export PATH="$HOME/.local/bin:$PATH"
+
+eval "$(starship init zsh)"
 
 # Machine-local overrides (untracked, not in this repo) -- e.g. secrets/tokens
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
