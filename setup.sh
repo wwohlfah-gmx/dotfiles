@@ -93,6 +93,19 @@ done
 PTYXIS_UUID=$(gsettings get org.gnome.Ptyxis default-profile-uuid | tr -d "'")
 gsettings set "org.gnome.Ptyxis.Profile:/org/gnome/Ptyxis/Profiles/${PTYXIS_UUID}/" palette catppuccin
 
+# MesloLGS Nerd Font: not packaged in Fedora repos. Starship's Catppuccin
+# preset (see zsh/.config/starship.toml) uses Nerd Font icon glyphs beyond
+# what the `powerline-fonts` package covers, so Ptyxis needs a real Nerd
+# Font or those icons render as tofu boxes.
+NERD_FONT_VER="v3.5.1"
+if [ ! -d ~/.local/share/fonts/MesloNerdFont ]; then
+  curl -fsSL -o /tmp/Meslo.zip \
+    "https://github.com/ryanoasis/nerd-fonts/releases/download/${NERD_FONT_VER}/Meslo.zip"
+  mkdir -p ~/.local/share/fonts/MesloNerdFont
+  unzip -o -q /tmp/Meslo.zip -d ~/.local/share/fonts/MesloNerdFont
+  fc-cache -f ~/.local/share/fonts
+fi
+
 #################
 # deepseek harness
 #################
