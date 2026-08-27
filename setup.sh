@@ -25,7 +25,7 @@ fi
 # https://medium.com/quick-programming/managing-dotfiles-with-gnu-stow-9b04c155ebad
 
 cd ~/dotfiles
-stow zsh bash git claude vscode ptyxis eza
+stow zsh bash git claude vscode ptyxis eza tmux
 cd ~
 
 #################
@@ -104,6 +104,20 @@ if [ ! -d ~/.local/share/fonts/MesloNerdFont ]; then
   mkdir -p ~/.local/share/fonts/MesloNerdFont
   unzip -o -q /tmp/Meslo.zip -d ~/.local/share/fonts/MesloNerdFont
   fc-cache -f ~/.local/share/fonts
+fi
+
+#################
+# tmux + Catppuccin theme
+#################
+sudo dnf install -y tmux
+
+# Installed manually (not via TPM) per upstream docs -- TPM has plugin
+# name-conflict issues. Config lives in the stowed `tmux` package.
+TMUX_CATPPUCCIN_VER="v2.3.0"
+if [ ! -d ~/.config/tmux/plugins/catppuccin/tmux ]; then
+  mkdir -p ~/.config/tmux/plugins/catppuccin
+  git clone -q -b "$TMUX_CATPPUCCIN_VER" https://github.com/catppuccin/tmux.git \
+    ~/.config/tmux/plugins/catppuccin/tmux
 fi
 
 #################
