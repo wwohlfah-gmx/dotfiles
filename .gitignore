@@ -1,0 +1,11 @@
+# Safety net: never commit anything that looks like a secret,
+# even if a future package accidentally copies it in here.
+*credentials*
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*token*
+*.env
+.netrc
+auth.json
