@@ -12,12 +12,47 @@ symlinks its files into place.
 - `claude/` — `.claude/settings.json` (Claude Code settings)
 - `packages/dnf-userinstalled.txt` — explicitly-installed dnf packages (not a
   stow package, just a manifest — see restore steps below)
+- `setup.sh` — full machine bootstrap script (dotfiles + shell + editor +
+  tools); see below
 
-## Restore on a new machine (Fedora)
+## Bootstrap a new machine (Fedora)
+
+```sh
+git clone https://github.com/wwohlfah-gmx/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+./setup.sh
+```
+
+`setup.sh` clones and stows this repo, then installs zsh + oh-my-zsh
+(agnoster theme, powerline), VS Code, the
+[deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) project,
+the Claude CLI, and Ollama (pulling `qwen3-coder`). It's safe to re-run —
+each step checks whether it already applied (existing clones, existing
+oh-my-zsh install, current login shell) before acting again.
+
+### Notes
+
+- **Stow conflicts**: `stow zsh bash git claude` fails if any of
+  `~/.zshrc`, `~/.bashrc`, `~/.bash_profile`, `~/.bash_logout`,
+  `~/.gitconfig`, or `~/.claude/settings.json` already exist as real files
+  (not symlinks) — e.g. on a machine that already has shell config from
+  `/etc/skel`. If that happens, move the conflicting file aside first
+  (`mv ~/.bashrc ~/.dotfiles-backup/.bashrc`, etc.) and re-run, or use
+  `stow --adopt` (see manual restore below) if you want the existing file's
+  content pulled into the repo instead.
+- **deepseek-harness's web UI** (`pnpm dsh web`) is a foreground server —
+  the script only installs and builds it; start it manually when needed.
+- **Ollama** only pulls the model; run `ollama run qwen3-coder` yourself to
+  start chatting.
+- Machine-local secrets (e.g. a GitHub token) are not part of this script
+  or the repo — see "Deliberately excluded" below and how `~/.bashrc.d/*` /
+  `~/.zshrc.local` (both untracked) are sourced instead.
+
+## Restore just the dotfiles (no other installs)
 
 ```sh
 sudo dnf install stow git oh-my-zsh-git   # or install oh-my-zsh via its own installer
-git clone <this-repo-url> ~/dotfiles
+git clone https://github.com/wwohlfah-gmx/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
 # If any target files already exist for real (not as symlinks), either
