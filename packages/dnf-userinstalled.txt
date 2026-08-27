@@ -79,6 +79,7 @@ efibootmgr-0:18-11.fc44.x86_64
 ethtool-2:7.1-1.fc44.x86_64
 exfatprogs-0:1.4.3-1.fc44.x86_64
 eza-0:0.23.5-1.fc44.x86_64
+fd-find-0:10.4.2-4.fc44.x86_64
 fedora-bookmarks-0:28-36.fc44.noarch
 fedora-chromium-config-0:3.0-9.fc44.noarch
 fedora-flathub-remote-0:1-12.fc44.noarch

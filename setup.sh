@@ -31,7 +31,7 @@ cd ~
 #################
 # zsh + oh-my-zsh
 #################
-sudo dnf install -y zsh eza fzf ripgrep bat
+sudo dnf install -y zsh eza fzf ripgrep bat fd-find
 
 if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
