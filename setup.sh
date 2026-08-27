@@ -58,7 +58,10 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 sudo dnf check-update || true
 sudo dnf install -y code
 code --install-extension Catppuccin.catppuccin-vsc
+code --install-extension anthropic.claude-code
 # Active theme (workbench.colorTheme) is set in the stowed `vscode` package.
+# The Claude Code extension shells out to the `claude` CLI installed later
+# in this script.
 
 #################
 # Catppuccin GTK theme + Ptyxis terminal palette
