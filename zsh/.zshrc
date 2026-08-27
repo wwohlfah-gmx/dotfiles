@@ -122,3 +122,6 @@ alias ll="ls -al"
 
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# Machine-local overrides (untracked, not in this repo) -- e.g. secrets/tokens
+[ -f ~/.zshrc.local ] && . ~/.zshrc.local
