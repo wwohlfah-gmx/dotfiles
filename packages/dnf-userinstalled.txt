@@ -347,7 +347,6 @@ time-0:1.9-28.fc44.x86_64
 tinysparql-0:3.11.1-1.fc44.x86_64
 tiwilink-firmware-0:20260810-1.fc44.noarch
 tmux-0:3.7c-1.fc44.x86_64
-tmux-powerline-0:2.8.4-19.fc44.noarch
 toolbox-0:0.3-4.fc44.x86_64
 traceroute-3:2.1.6-4.fc44.x86_64
 tree-0:2.2.1-4.fc44.x86_64
