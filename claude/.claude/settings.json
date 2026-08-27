@@ -1,3 +1,25 @@
 {
-  "theme": "dark"
+  "theme": "dark",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // empty'); if echo \"$cmd\" | grep -qE '(^|[;&|]) *(sudo +)?(dnf|yum|rpm|apt|apt-get|flatpak) +(install|remove|erase|reinstall)|pip3? +install|(npm|pnpm|yarn) +(install|i|add) +(-g|--global)|curl[^|]*\\|[^|]*(sh|bash)|wget[^|]*\\|[^|]*(sh|bash)'; then echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"This command appears to install software. Check whether ~/dotfiles (setup.sh, packages/dnf-userinstalled.txt) should be updated and committed to reflect it.\"}}'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=$(jq -r '.tool_input.file_path // .tool_response.filePath // empty'); home=\"$HOME\"; case \"$f\" in \"$home\"/dotfiles/*|\"$home\"/.dotfiles-backup/*|\"$home\"/.claude/projects/*|\"$home\"/.claude/sessions/*|\"$home\"/.claude/cache/*|\"$home\"/.claude/downloads/*|\"$home\"/.claude/backups/*|\"$home\"/.claude/shell-snapshots/*|\"$home\"/.claude/session-env/*|\"$home\"/.claude/.credentials.json|\"$home\"/.claude/history.jsonl|\"$home\"/.claude/.last-cleanup|\"$home\"/.zsh_history|\"$home\"/.bash_history) ;; \"$home\"/.*|\"$home\"/.config/*) echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"This edits a dotfile/config under the home directory. Check whether ~/dotfiles (stow packages: zsh, bash, git, claude) should be updated to track this change, and commit if so.\"}}' ;; esac"
+          }
+        ]
+      }
+    ]
+  }
 }
