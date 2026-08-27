@@ -25,7 +25,7 @@ fi
 # https://medium.com/quick-programming/managing-dotfiles-with-gnu-stow-9b04c155ebad
 
 cd ~/dotfiles
-stow zsh bash git claude vscode ptyxis
+stow zsh bash git claude vscode ptyxis eza
 cd ~
 
 #################
