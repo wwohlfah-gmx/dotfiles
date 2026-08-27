@@ -6,15 +6,15 @@ symlinks its files into place.
 
 ## Layout
 
-- `zsh/` — `.zshrc` (oh-my-zsh, prompt: Starship w/ Catppuccin Mocha
+- `zsh/` — `.zshrc` (oh-my-zsh, prompt: Starship w/ Catppuccin Macchiato
   Powerline preset), `.config/starship.toml`
 - `bash/` — `.bashrc`, `.bash_profile`, `.bash_logout`
 - `git/` — `.gitconfig`
 - `claude/` — `.claude/settings.json` (Claude Code settings + the
   dotfiles-sync reminder hooks)
-- `vscode/` — `.config/Code/User/settings.json` (theme: Catppuccin Mocha)
+- `vscode/` — `.config/Code/User/settings.json` (theme: Catppuccin Macchiato)
 - `ptyxis/` — `.local/share/org.gnome.Ptyxis/palettes/catppuccin.palette`
-  (Latte for light mode, Mocha for dark)
+  (Latte for light mode, Macchiato for dark)
 - `packages/dnf-userinstalled.txt` — explicitly-installed dnf packages (not a
   stow package, just a manifest — see restore steps below)
 - `setup.sh` — full machine bootstrap script (dotfiles + shell + editor +
@@ -29,8 +29,8 @@ cd ~/dotfiles
 ```
 
 `setup.sh` clones and stows this repo, then installs zsh + oh-my-zsh with a
-Starship prompt (Catppuccin Mocha Powerline preset), VS Code (+ Catppuccin
-extension), the Catppuccin GTK theme (mocha/mauve, with libadwaita support)
+Starship prompt (Catppuccin Macchiato Powerline preset), VS Code (+ Catppuccin
+extension), the Catppuccin GTK theme (macchiato/mauve, with libadwaita support)
 and Ptyxis terminal palette, the
 [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) project,
 the Claude CLI, and Ollama (pulling `qwen3-coder`). It's safe to re-run —

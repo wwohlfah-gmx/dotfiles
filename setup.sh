@@ -63,7 +63,7 @@ code --install-extension Catppuccin.catppuccin-vsc
 #################
 # Catppuccin GTK theme + Ptyxis terminal palette
 #################
-GTK_FLAVOR="mocha"
+GTK_FLAVOR="macchiato"
 GTK_ACCENT="mauve"
 GTK_VER="v1.0.3"
 GTK_THEME_NAME="catppuccin-${GTK_FLAVOR}-${GTK_ACCENT}-standard+default"
