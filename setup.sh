@@ -25,13 +25,13 @@ fi
 # https://medium.com/quick-programming/managing-dotfiles-with-gnu-stow-9b04c155ebad
 
 cd ~/dotfiles
-stow zsh bash git claude vscode ptyxis eza tmux
+stow zsh bash git claude vscode ptyxis eza tmux bat
 cd ~
 
 #################
 # zsh + oh-my-zsh
 #################
-sudo dnf install -y zsh eza fzf ripgrep
+sudo dnf install -y zsh eza fzf ripgrep bat
 
 if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
