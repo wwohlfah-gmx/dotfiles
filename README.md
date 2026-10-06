@@ -22,8 +22,7 @@ symlink conflicts, nothing to move aside first on a fresh account).
   light mode, Macchiato for dark)
 - `home/run_once_after_*.sh` — provisioning scripts chezmoi runs once each
   (oh-my-zsh, starship, VS Code, GTK/Ptyxis/Nerd Font theming, tmux plugin,
-  deepseek-harness, Claude CLI, Ollama); re-run automatically if their own
-  content changes
+  Claude CLI, Ollama); re-run automatically if their own content changes
 - `packages/dnf-userinstalled.txt` — explicitly-installed dnf packages (plain
   manifest, outside the chezmoi-managed subtree — see restore steps below)
 - `setup.sh` — installs chezmoi, then `chezmoi init --apply`
@@ -41,11 +40,10 @@ cd ~/dotfiles
 lays down every file under `home/`, and then runs each `run_once_after_*.sh`
 script once: zsh + oh-my-zsh with a Starship prompt, VS Code (+ Catppuccin
 extension), the Catppuccin GTK theme (macchiato/mauve, with libadwaita
-support) and Ptyxis terminal palette, a Nerd Font,
-[deepseek-harness](https://github.com/deepseek-ai/deepseek-harness), the
-Claude CLI, and Ollama (pulling `qwen3-coder`). It's safe to re-run — chezmoi
-only reapplies files that drifted, and each `run_once_` script only re-runs
-if its own content changes.
+support) and Ptyxis terminal palette, a Nerd Font, the Claude CLI, and Ollama
+(pulling `qwen3-coder`). It's safe to re-run — chezmoi only reapplies files
+that drifted, and each `run_once_` script only re-runs if its own content
+changes.
 
 ### Notes
 
@@ -67,8 +65,6 @@ if its own content changes.
   the script's own `--link` flag, because that release's `--link` points at a
   `-dark`-suffixed theme directory that doesn't match what the release zip
   actually extracts to.
-- **deepseek-harness's web UI** (`pnpm dsh web`) is a foreground server —
-  the script only installs and builds it; start it manually when needed.
 - **Ollama** only pulls the model; run `ollama run qwen3-coder` yourself to
   start chatting.
 - Machine-local secrets (e.g. a GitHub token) are not part of this repo —
